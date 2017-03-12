@@ -1,0 +1,78 @@
+body {
+	height: 100%;
+}
+
+.images {width: 130px;
+		height: 130px;
+}
+
+/*title*/
+h1 {
+	height: 10%;
+	margin-top: 2%;
+	margin-left: 70%;
+}
+
+/*section headers*/
+
+h2 {
+	/*position: absolute;*/
+	/*display: block;*/
+	/*margin-left: 5%;*/
+	/*margin-top:10%*/
+	color: green;
+	/*width: 35%;*/
+}
+
+/*row 1*/
+#you-image {
+	/*height: 20%;*/
+	border: 1px solid black;
+}
+
+#you {
+	font-size: 200%;
+	color:green;
+	margin-top: 1%;
+	border: 1px solid black;
+}
+
+#opponent-image {
+	height: 160px;	
+	border: 1px solid black;
+}
+#opponent {
+	margin-top: 1%;
+	font-size: 200%;
+	color:green;
+	border: 1px solid black;
+}
+
+#remainder-image {
+	height: 160px;	
+	border: 1px solid black;
+}
+#remainder {
+	margin-top: 1%;
+	font-size: 200%;
+	color:green;
+	border: 1px solid black;
+}
+
+section {
+	/*overflow:auto;*/
+	border: 1px solid black;
+}
+
+#end {
+	height: 10%;
+	/*width: 15%;*/
+	/*margin-top: 15%;*/
+	/*display:inline-block;*/
+	border: 1px solid black;
+}
+
+button {
+	border: 1px solid black;
+}
+
