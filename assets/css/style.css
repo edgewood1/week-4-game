@@ -24,9 +24,17 @@ h2 {
 	/*width: 35%;*/
 }
 
+#container {overflow:auto;}
+#left {width:67%;
+	float:left;}
+	#right {
+		width: 30%;
+		float:left;
+	}
+
 /*row 1*/
 #you-image {
-	/*height: 20%;*/
+	
 	border: 1px solid black;
 }
 
@@ -36,7 +44,7 @@ h2 {
 	margin-top: 1%;
 	border: 1px solid black;
 }
-
+/*row 2*/
 #opponent-image {
 	height: 160px;	
 	border: 1px solid black;
@@ -63,7 +71,9 @@ section {
 	/*overflow:auto;*/
 	border: 1px solid black;
 }
-
+#results {
+	font-size: 120%;
+}
 #end {
 	height: 10%;
 	/*width: 15%;*/
