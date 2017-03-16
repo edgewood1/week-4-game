@@ -1,39 +1,81 @@
 <doctype HTML!>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <html>
 
-</head>
-<body>
-<h1> Role Playing Game! </h1>
+  <head>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-<section id="container">
-<section id="left"> 
+  </head>
 
-<p id="you-image"></p>
-<h2 id="you">  </h2>
+  <body>
 
-<p id="opponent-image"></p>
-<h2 id="opponent">  </h2>
+    <header>
 
-<p id="remainder-image"></p>
-<h2 id="remainder"> </h2>
+      <div class="bart">
+        <figure class="bart">
+          <img class="bart images" src="assets/images/bart.jpg">
+          <figcaption class="bart"> Bart </figcaption>
+        </figure>
+      </div>
 
-</section>
+      <div class="death">
+        <figure class="death">
+          <img class="death images" src="assets/images/death.jpg">
+          <figcaption class="death"> Death </figcaption>
+        </figure>
+      </div>
 
-<section id="right">
+      <div class="slinger">
+        <figure class="slinger">
+          <img class="slinger images" src="assets/images/slinger.jpg">
+          <figcaption class="slinger"> Gunslinger </figcaption>
+        </figure>
+      </div>
 
-<h2 id="results"> Results</h2>
-<button id="restart"> Restart </button>
-<button id="show"> Show Your Hand </button>
+      <div class="clair">
+        <figure class="clair">
+          <img class="clair images" src="assets/images/the clairvoyant.jpg">
+          <figcaption class="clair"> The Clairvoyant </figcaption>
+        </figure>
+      </div>
 
-</section>
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+      <h1> Role Playing Game!</h1>
+      <h1 id="win"> Wins: </h1>
+      
+      <h1 id="loss"> Losses: </h1>
+      <h1 id="draw"> Draws: </h1>
+
+    </header>
+
+    <section id="container">
+      <section id="left">
+
+        <p id="you-image"></p>
+        <h2 id="you">  </h2>
+
+        <p id="opponent-image"></p>
+        <h2 id="opponent">  </h2>
+
+        <p id="remainder-image"></p>
+        <h2 id="remainder"> </h2>
+
+      </section>
+
+      <section id="right">
+
+        <h2 id="results"> Results</h2>
+        <button id="restart"> Restart </button>
+        <button id="show"> Show Your Hand </button>
+
+      </section>
 
 
-</section>
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-<script src="assets/javascript/game.js"></script>
+    </section>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="assets/javascript/game2.js"></script>
 
-</body>
-</html>
+  </body>
+
+  </html>

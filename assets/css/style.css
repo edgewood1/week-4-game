@@ -2,14 +2,34 @@ body {
 	height: 100%;
 }
 
-.images {width: 130px;
-		height: 130px;
+/*title*/
+header {
+	height: 25%;
+	overflow: auto;
 }
 
-/*title*/
-h1 {
-	height: 10%;
-	margin-top: 2%;
+div {
+	float: left;}
+
+.images {width: 130px;
+		height: 65%;
+
+}
+img {margin-left: 10%;}
+
+figcaption{width: 100%;text-align:center;}
+
+/*.bart, .death {
+	
+	border: 1px solid black;
+	float: left;
+
+}
+*/
+
+
+h1{
+	
 	margin-left: 70%;
 }
 
@@ -26,15 +46,25 @@ h2 {
 
 #container {overflow:auto;}
 #left {width:67%;
+
 	float:left;}
+
 	#right {
 		width: 30%;
 		float:left;
 	}
 
+
 /*row 1*/
+
+
+.bart .death {
+	height: 160px;
+	border: 1px solid black;
+}
+
 #you-image {
-	
+	height: 170px;
 	border: 1px solid black;
 }
 

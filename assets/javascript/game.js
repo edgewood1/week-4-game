@@ -1,40 +1,31 @@
 function restart() {
 
 ///// resets the page upon a restart.      
-  $("#you-image").html(" ");
-  $("#you").html(" ");
+  // $("#you-image").html(" ");
+  // $("#you").html(" ");
 
-  $("#opponent-image").html(" ");
-  $("#opponent").html(" ");
-  $("#remainder-image").html(" ");
-  $("#remainder").html(" ");
+  // $("#opponent-image").html(" ");
+  // $("#opponent").html(" ");
+  // $("#remainder-image").html(" ");
+  // $("#remainder").html(" ");
 
-  $("#results").html(" ");
+  // $("#results").html(" ");
 
 //////sets up the page///
 
   var prompts = ["Select your player", "Your player", "Select your opponent", "Your opponent", "Rouge's Gallery"];
-  var bart = $("<div>");
-  var fig = $("<figure>");
-  bart.append(fig);
-  $(fig).append($("<img>").attr("class", "images").attr("id", 0).attr("src", "assets/images/bart.jpg"));
-  $(fig).append("<figcaption> Bart </figcaption>");
-  $("#you-image").append(bart);
-  var death = $("<img>").attr("class", "images").attr("id", 1).attr("src", "assets/images/death.jpg");
-  $("#you-image").append(death);
-  var slinger = $("<img>").attr("class", "images").attr("id", 2).attr("src", "assets/images/slinger.jpg");
-  $("#you-image").append(slinger);
-  var clairvoyant = $("<img>").attr("class", "images").attr("id", 3).attr("src", "assets/images/the clairvoyant.jpg");
-  $("#you-image").append(clairvoyant);
+  
   $("#you").text(prompts[0]); // Select Player
   var pa, pb, aa, ac;
   var counter = 0;
   var hasProt = false;
   var gamecounter = 0;
   var pts = [];
+  var dead = [];
   
 
-/////////event  1: CHOOSE / INITIALIZE PROTAGONIST / ANTAGONIST///////////////////////////////////////////////
+/////////event  1: CHOOSE / PROTAGONIST / 
+//////////////////////////////////////////////
 $('.images').on('click', function(){
 
     if (counter === 0) {
@@ -45,7 +36,7 @@ $('.images').on('click', function(){
       // $(".images").each(function() {    ***return 
         // if ($(this).attr("class") !== "images prot") { **undelete
           $(this).hide;
-          $("#opponent-image").append($(this));
+          $("#you-image").append($(this));
         }   // ends inner if 
       // }); ////ends event 1 - a - a /// 
       $("#you").text(prompts[1]); //Your player (selected)
@@ -126,6 +117,7 @@ $('#show').on('click', function(){    //fourth event
       if (counter>2 && gamecounter >0) {
         aa = aa - pb;
         pa = pa - ac;
+        pb = pb + 15;
         
 /// why is the above looping through 2-3 times? 
 
@@ -133,7 +125,9 @@ $('#show').on('click', function(){    //fourth event
           setTimeout(wait1, 1000);
             function wait1() {
               $("#results").html("<br>" + "Antagonist Loses");
-              };          
+              };     
+              dead.push(antag1);
+
             }
         else if (pa <= 0) {
           setTimeout(wait2, 1000);
