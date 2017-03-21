@@ -1,8 +1,8 @@
 var pts = {
-  bart: [130, 30, 20],
-  death: [150, 45, 25],
-  slinger: [170, 60, 40],
-  clair: [190, 70, 50]
+  bart: [130, 40, 15],
+  death: [150, 50, 20],
+  slinger: [170, 60, 25],
+  clair: [190, 70, 30]
 
 };
 var pro = false;
@@ -24,9 +24,9 @@ function restart() {
 
   pts = {
     bart: [130, 20, 25],
-    death: [150, 35, 35],
-    slinger: [170, 50, 50],
-    clair: [190, 60, 60]
+    death: [150, 35, 30],
+    slinger: [170, 50, 35],
+    clair: [190, 60, 40]
   };
 
   pro = false;
@@ -66,64 +66,80 @@ function restart() {
 
   function antagonist() {
 
-    if (!(dead.length == 3)) {
-      $("#result").empty();
+if (!(ant)) {
+     $("#result").empty();
 
-      $("#opponent-image").css("text-align", "center").html("<br><br>" + "Select a Challenger");
-    }
+     $("#opponent-image").css("text-align", "center").html("<br><br>" + "Select a Challenger");
 
-    $('div').on('click', function(evnt) {
-      event.stopPropagation();
-      if (!ant && !($(this).attr("class") === (protag)) && !($(this).attr("class") == (dead[0])) && !($(this).attr("class") == (dead[1]))) {
+     $('div').on('click', function(evnt) {
+     event.stopPropagation();
+
+/// so long as you haven't chosen an antagonist and your choice is not a protagonist or someone from the dead pool. 
+      
+     if (!($(this).attr("class") === (protag)) && !($(this).attr("class") == (dead[0])) && !($(this).attr("class") == (dead[1]))) {
+
+/// remember the antagonist
 
         antag = ($(this).attr("class"));
 
+/// copy its image in the opponent 
+
         $("#opponent-image").empty();
         $(this).clone().appendTo($("#opponent-image"));
+
+// give him points
 
         aa = pts[antag][0];
         ac = pts[antag][2];
         $("#opponent-image").append("<br>" + "Your opponent's worth: " + aa + "<br> <br>" + "Power of his hand: " + ac + "<br> <br>");
         ant = true;
+
+//play time
+
         $("#result").html("Now Show Your Hand!!!");
-      }
+      } // end of antag if
 
-    });
+    }); // end of antag event handler
+}// end main if
+  }; // end of antag function
 
-  };
+/////// //PLAY CLICK 
 
-  $('#show').on('click', function(event) { //fourth event
+  $('#show').on('click', function(event) { //  
     event.stopImmediatePropagation();
+
+  // to play, both characters must be present and neither under zero points
+
     if ((pro && ant) && !(aa <= 0 || pa <= 0)) {
       $("#result").html("Now Show Your Hand!!!");
       pa = pa - ac;
       aa = aa - pb;
-      pb = pb + 40;
+      pb = pb + 47;
+
+  // show each the results of the play 
+
       $("#you-image").empty();
       $("div." + protag).clone().appendTo("#you-image");
       $("#you-image").append("<br>" + "Your worth: " + pa + "<br><br>" + " Power of your hand: " + pb + "<br> <br>");
+
       $("#opponent-image").empty();
       $("div." + antag).clone().appendTo("#opponent-image");
       $("#opponent-image").append("<br>" + "Your opponent's worth: " + aa + "<br> <br>" + "Power of his hand: " + ac + "<br> <br>");
+      
+// if one character slips under zero, they pay the consequence: 
+
       if (aa <= 0 || pa <= 0) {
         consequence();
-      }
+      } // end if to consequence
     } // end main if
-  });
-  //  VILLIAN / AA loses and No draw
-  function consequence() {
-    if ((aa <= 0) && !(pa <= 0 && aa <= 0)) {
-      if (dead.length == 3) {
-        $("#opponent-image").css("text-align", "center").html("<br><br>" + "You've Cleaned The Streets!");
-        $("#result").empty();
-        wins++;
-        setTimeout(wait, 2000);
+  }); //end play click
 
-        function wait() {};
-        restart();
-      } //if dead
-      else {
-        $("#opponent-image").html("<br><br>" + "You've taken him out...");
+
+  function consequence() {
+
+//  VILLIAN loses and HERO alive and it's NOT the last VILLIAN
+    if ((aa <= 0) && (pa > 0) & !(dead.length==3)) {
+      $("#opponent-image").html("<br><br>" + "You've taken him out...");
         $("#result").empty();
         $("div." + antag).clone().appendTo("#remainder-image");
         setTimeout(wait1, 2000);
@@ -133,12 +149,24 @@ function restart() {
         function wait1() {
           $("#opponent-image").empty();
           antagonist();
-        }; //function - this isn't sending it back home - instead
-      } //else 
-    } //if aa
+        }; // end of wait function
+      
 
-    // PA (HERO) LOSES 
-    else if ((pa <= 0) && !(pa <= 0 && aa <= 0)) {
+/// IF inside IF: if the LAST VILLIAN loses and HERO alive
+      if ((aa <= 0) && (pa > 0) && (dead.length == 3)) {
+        $("#opponent-image").css("text-align", "center").html("<br><br>" + "You've Cleaned The Streets!");
+        $("#result").empty();
+        wins++;
+        setTimeout(wait, 2000);
+        function wait() {
+        restart();
+      
+      }; // end wait function
+      } // end inner if
+      } // end outer if
+      
+// else if HERO loses but VILLIAN lives 
+    else if ((pa <= 0) && (aa > 0)) {
       losses++;
       $("#you-image").html("<br>" + "You've lost!!");
       $("#result").empty();
@@ -146,10 +174,11 @@ function restart() {
 
       function wait2() {
         restart();
-      };
-    }
+      }; // end wait
+    } // end else if
 
-    // DRAW - BOTH LOSE
+// else if DRAW
+
     else if (pa <= 0 && aa <= 0) {
       draws++;
       $("#you-image").html("<br>" + "DRAW!!");
@@ -159,15 +188,14 @@ function restart() {
 
       function wait3() {
         restart();
-      };
-    }
-    // WIN
+      }; // end waiting
+    } // else if ends
+  
+  }; //close whole   consequence function      
 
-  }; //close whole   consequence       
-
-  ////// fourth event ends ////////?????????//////////
+  
 
   $('#restart').on('click', restart); //second event
+  
 };
-
 restart();
